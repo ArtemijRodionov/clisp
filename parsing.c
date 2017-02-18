@@ -32,11 +32,12 @@ int main(int argc, char**argv) {
 
   mpca_lang(
 	  MPCA_LANG_DEFAULT,
-	  "number: /-?[0-9]+/; \
-           operator: '+' | '-' | '*' | '/'; \
+	  "number: /-?\\d+(\\.\\d+)?/; \
+           operator: /add|\\+/ | /sub|\\-/ | /mul|\\*/ | /div|\\//; \
            expr: <number> | '(' <operator> <expr>+ ')'; \
            clisp: /^/ <operator> <expr>+ /$/;",
-	  Number, Operator, Expr, Clisp);
+	  Number, Operator, Expr, Clisp
+	    );
 
   puts("It is dummy version Clisp.");
   puts("Lispy version 0.1");
